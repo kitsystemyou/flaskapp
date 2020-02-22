@@ -90,3 +90,5 @@ ENV/
 
 # Maybe not require
 .azure
+setting.json
+.vscode/
