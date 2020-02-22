@@ -92,4 +92,4 @@ ENV/
 .azure
 setting.json
 .vscode/
-static/
+static/images
