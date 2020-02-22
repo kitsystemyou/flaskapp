@@ -3,6 +3,11 @@ import os
 from PIL import Image
 import numpy as np
 
+
+SAVE_DIR = "./static/images"
+if not os.path.isdir(SAVE_DIR):
+    os.mkdir(SAVE_DIR)
+
 app = Flask(__name__)
 
 # @app.route("/")
@@ -16,17 +21,24 @@ def index():
 
 @app.route('/result', methods=['POST'])
 def result():
-    # submitした画像が存在したら処理する
-    if request.files['image']:
-        # color画像として読み込み
-        image_pil = Image.open(request.files['image']).convert('RGB')
+    # exist or not uploaded file
+    if request.files['uploadFile']:
+        file_uploaded = request.files['uploadFile']
+        # get filename without extention
+        name = os.path.splitext(file_uploaded.filename)[0]
+        # read as RGB image
+        image_pil = Image.open(request.files['uploadFile']).convert('RGB')
         image = np.array(image_pil, 'uint8')
         print("success reading image")
         predict_Confidence = 1
         lenimage = len(image[0])
-
-        return render_template('./result.html', title='類似度', predict_Confidence=predict_Confidence, lenimage=lenimage)
+        # save image
+        savepath = SAVE_DIR + "/" + name +".png"
+        image_pil.save(savepath)
+        print("get image")
+        return render_template('./result.html', title='類似度', savepath=savepath)
     
     else:
         return redirect(url_for('index'))
+
 

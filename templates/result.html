@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h3>類似度</h3>
-{{ predict_Confidence }}
+<h3>Input Image</h3>
+{{ savepath }}
+    <p>
+        <img src="{{ savepath }}">
+    </p>
+
 {{ lenimage }}
 
 {% endblock %}
