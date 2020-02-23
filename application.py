@@ -26,17 +26,20 @@ def result():
         file_uploaded = request.files['uploadFile']
         # get filename without extention
         name = os.path.splitext(file_uploaded.filename)[0]
-        # read as RGB image
-        image_pil = Image.open(request.files['uploadFile']).convert('RGB')
-        image = np.array(image_pil, 'uint8')
-        print("success reading image")
-        predict_Confidence = 1
-        lenimage = len(image[0])
-        # save image
-        savepath = SAVE_DIR + "/" + name +".png"
-        image_pil.save(savepath)
-        print("get image")
-        return render_template('./result.html', title='類似度', savepath=savepath)
+        print(name)
+        
+        # # read as RGB image
+        # image_pil = Image.open(request.files['uploadFile']).convert('RGB')
+        # image = np.array(image_pil, 'uint8')
+        # print("success reading image")
+        # predict_Confidence = 1
+        # lenimage = len(image[0])
+        # # save image
+        # savepath = SAVE_DIR + "/" + name +".png"
+        # image_pil.save(savepath)
+
+        print("get sound")
+        return render_template('./result.html', title='Remove Vocal', savepath=savepath)
     
     else:
         return redirect(url_for('index'))
