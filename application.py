@@ -5,8 +5,12 @@ import numpy as np
 
 
 SAVE_DIR = "./static/images"
+SAVE_AUDIO = "./static/audio"
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
+
+if not os.path.issdir(SAVE_AUDIO):
+    os.mkdir (SAVE_AUDIO)
 
 app = Flask(__name__)
 
@@ -27,7 +31,9 @@ def result():
         # get filename without extention
         name = os.path.splitext(file_uploaded.filename)[0]
         print(name)
-        
+        rawaudio = request.files['uploadFile']
+        print(type(rawaudio))
+        rawaudio.save("/static/audio")
         # # read as RGB image
         # image_pil = Image.open(request.files['uploadFile']).convert('RGB')
         # image = np.array(image_pil, 'uint8')
@@ -39,7 +45,7 @@ def result():
         # image_pil.save(savepath)
 
         print("get sound")
-        return render_template('./result.html', title='Remove Vocal', savepath=savepath)
+        return render_template('./result.html', title='Remove Vocal')
     
     else:
         return redirect(url_for('index'))
