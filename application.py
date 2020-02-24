@@ -5,14 +5,14 @@ import numpy as np
 
 
 # SAVE_DIR = "./static/images"
-SAVE_AUDIO = "/app/static/audio" # for heroku
+# SAVE_AUDIO = "/app/static/audio" # for heroku
 
 
 # if not os.path.isdir(SAVE_DIR):
 #     os.mkdir(SAVE_DIR)
 
-if not os.path.isdir(SAVE_AUDIO):
-    os.mkdir (SAVE_AUDIO)
+# if not os.path.isdir(SAVE_AUDIO):
+#     os.mkdir (SAVE_AUDIO)
 
 app = Flask(__name__)
 
