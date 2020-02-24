@@ -37,7 +37,7 @@ def result():
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
-        os.system('python -m spleeter separate -i ' + savepath + '-p spleeter:2stems -o output')
+        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o output')
         return render_template('./result.html', title='Remove Vocal')
     
     else:
