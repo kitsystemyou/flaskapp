@@ -33,9 +33,11 @@ def result():
         print(name)
         rawaudio = request.files['uploadFile']
         print(type(rawaudio))
-        rawaudio.save(SAVE_AUDIO + "/" + name + ".mp3")
-
+        savepath = SAVE_AUDIO + "/" + name + ".mp3"
+        rawaudio.save(savepath)
         print("get sound")
+        print(savepath)
+        os.system('python -m spleeter separate -i ' + savepath + '-p spleeter:2stems -o output')
         return render_template('./result.html', title='Remove Vocal')
     
     else:
