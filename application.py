@@ -6,6 +6,9 @@ import numpy as np
 
 SAVE_DIR = "./static/images"
 SAVE_AUDIO = "./static/audio"
+AZURE_PATH = "/home/site/wwroot"
+
+
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
 
@@ -37,7 +40,10 @@ def result():
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
-        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o static/audio/' + name )
+
+        # /home/site/wwrot is an azure directory
+        os.system('python -m spleeter separate -i ' + AZURE_PATH + savepath + ' -p spleeter:2stems -o '+ AZURE_PATH + '/static/audio/')
+        print("static/audio/" + name)
         return render_template('./result.html', title='Audio separation', name=name)
     
     else:
