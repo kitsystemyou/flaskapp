@@ -30,6 +30,7 @@ requests==2.23.0
 scipy==1.4.1
 six==1.14.0
 spleeter==1.4.9
+setuptools==41.0.0
 tensorboard==1.14.0
 tensorflow==1.14.0
 tensorflow-estimator==1.14.0

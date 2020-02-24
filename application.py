@@ -4,12 +4,12 @@ from PIL import Image
 import numpy as np
 
 
-SAVE_DIR = "./static/images"
+# SAVE_DIR = "./static/images"
 SAVE_AUDIO = "./static/audio"
 
 
-if not os.path.isdir(SAVE_DIR):
-    os.mkdir(SAVE_DIR)
+# if not os.path.isdir(SAVE_DIR):
+#     os.mkdir(SAVE_DIR)
 
 if not os.path.isdir(SAVE_AUDIO):
     os.mkdir (SAVE_AUDIO)
