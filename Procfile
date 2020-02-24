@@ -1,1 +1,1 @@
-web: uwsgi --http-socket :$PORT --module 'flaskr:create_app()'
+web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent main:app
