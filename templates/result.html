@@ -2,11 +2,9 @@
 {% block content %}
 
 <h3>Removed Audio</h3>
-{{ savepath }}
-    <p>
-        <img src="{{ savepath }}">
-    </p>
 
-{{ lenimage }}
+    <audio controls>
+        <source src="./static/audio/{{ name }}/vocals.wav">
+    </audio>
 
 {% endblock %}
