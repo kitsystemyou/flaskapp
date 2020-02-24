@@ -93,3 +93,4 @@ ENV/
 setting.json
 .vscode/
 static/images
+static/audio

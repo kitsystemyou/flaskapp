@@ -9,7 +9,7 @@ SAVE_AUDIO = "./static/audio"
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
 
-if not os.path.issdir(SAVE_AUDIO):
+if not os.path.isdir(SAVE_AUDIO):
     os.mkdir (SAVE_AUDIO)
 
 app = Flask(__name__)
@@ -33,16 +33,7 @@ def result():
         print(name)
         rawaudio = request.files['uploadFile']
         print(type(rawaudio))
-        rawaudio.save("/static/audio")
-        # # read as RGB image
-        # image_pil = Image.open(request.files['uploadFile']).convert('RGB')
-        # image = np.array(image_pil, 'uint8')
-        # print("success reading image")
-        # predict_Confidence = 1
-        # lenimage = len(image[0])
-        # # save image
-        # savepath = SAVE_DIR + "/" + name +".png"
-        # image_pil.save(savepath)
+        rawaudio.save(SAVE_AUDIO + "/" + name + ".mp3")
 
         print("get sound")
         return render_template('./result.html', title='Remove Vocal')
