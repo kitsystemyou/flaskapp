@@ -41,7 +41,7 @@ def result():
         print(savepath)
 
         # /home/site/wwrot is an azure directory
-        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /static/audio/')
+        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o static/audio/')
         print("static/audio/" + name)
         return render_template('./result.html', title='Audio separation', name=name)
     
