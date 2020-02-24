@@ -37,8 +37,8 @@ def result():
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
-        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o static/audio')
-        return render_template('./result.html', title='Remove Vocal', name=name)
+        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o static/audio/' + name )
+        return render_template('./result.html', title='Audio separation', name=name)
     
     else:
         return redirect(url_for('index'))
