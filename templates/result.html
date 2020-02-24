@@ -3,8 +3,13 @@
 
 <h3>Removed Audio</h3>
 
-    <audio controls>
+    <audio id="player1" controls>
         <source src="./static/audio/{{ name }}/vocals.wav">
     </audio>
+
+    <audio id="player2" controls>
+        <source src="./static/audio/{{ name }}/accompaniment.wav">
+    </audio>
+
 
 {% endblock %}
