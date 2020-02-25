@@ -36,11 +36,10 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print(name)
         rawaudio = request.files['uploadFile']
-        print(type(rawaudio))
         savepath = "/app/static/audio/" + name + ".mp3"
         rawaudio.save(savepath)
         print("get sound")
-        print(savepath)
+        print("save:" + savepath)
 
         # /home/site/wwrot is an azure directory
         os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
