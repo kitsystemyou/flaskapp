@@ -34,7 +34,7 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print(name)
         rawaudio = request.files['uploadFile']
-        savepath = "/tmp" + name + ".mp3"
+        savepath = "/tmp/" + name + ".mp3"
         rawaudio.save(savepath)
         print(os.path.exists(savepath))
         print("get sound")
