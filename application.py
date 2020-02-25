@@ -32,7 +32,7 @@ def result():
         file_uploaded = request.files['uploadFile']
         # get filename without extention
         name = os.path.splitext(file_uploaded.filename)[0]
-        print(name)
+        print("name:" + name)
         rawaudio = request.files['uploadFile']
         savepath = "/tmp/" + name + ".mp3"
         rawaudio.save(savepath)
@@ -42,7 +42,6 @@ def result():
 
         # os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
         q.enqueue(background_process,savepath)
-        print("static/audio/" + name)
         
         return render_template('./result.html', title='Audio separation', name=name)
     
@@ -51,6 +50,7 @@ def result():
 
 def background_process(savepath):
     print("process separation")
+    print(os.path.exists(savepath))
     os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /tmp')
     print("finish separation")
 
