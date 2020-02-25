@@ -7,6 +7,8 @@ import numpy as np
 # SAVE_DIR = "./static/images"
 # SAVE_AUDIO = "/app/static/audio" # for heroku
 print(__file__)
+print(os.path.dirname(__file__))
+# SAVE_AUDIO = __file__
 
 # if not os.path.isdir(SAVE_DIR):
 #     os.mkdir(SAVE_DIR)
