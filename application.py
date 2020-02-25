@@ -51,7 +51,7 @@ def result():
 
 def background_process(savepath):
     print("process separation")
-    os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
+    os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /tmp')
     print("finish separation")
 
 if __name__ == '__main__':
