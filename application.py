@@ -9,7 +9,7 @@ from worker import conn
 # SAVE_AUDIO = "/app/static/audio" # for heroku
 # print(__file__)
 print(os.path.dirname(__file__))
-SAVE_AUDIO = os.path.dirname(__file__)
+flask_root = os.path.dirname(__file__)
 
 q = Queue(connection=conn)
 
@@ -34,7 +34,7 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print("name:" + name)
         rawaudio = request.files['uploadFile']
-        savepath = "/tmp/" + name + ".mp3"
+        savepath = "./tmp/" + name + ".mp3"
         rawaudio.save(savepath)
         print(os.path.exists(savepath))
         print("get sound")
@@ -50,6 +50,8 @@ def result():
 
 def background_process(savepath):
     print("process separation")
+    savepath = os.path.join(flask_root, savepath[2:])
+    print("savepath")
     print(os.path.exists(savepath))
     os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /tmp')
     print("finish separation")
