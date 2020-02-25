@@ -2,13 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import os
 from PIL import Image
 import numpy as np
-
+from rq import Queue
+from worker import conn
 
 # SAVE_DIR = "./static/images"
 # SAVE_AUDIO = "/app/static/audio" # for heroku
 # print(__file__)
 print(os.path.dirname(__file__))
 SAVE_AUDIO = __file__
+
+q = Queue(connection=conn)
 
 # if not os.path.isdir(SAVE_DIR):
 #     os.mkdir(SAVE_DIR)
@@ -41,13 +44,18 @@ def result():
         print("get sound")
         print("save:" + savepath)
 
-        # /home/site/wwrot is an azure directory
-        os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
+        # os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
+        q.enqueue(background_process,savepath)
         print("static/audio/" + name)
+        
         return render_template('./result.html', title='Audio separation', name=name)
     
     else:
         return redirect(url_for('index'))
+
+def background_process(savepath):
+    os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
+    
 
 if __name__ == '__main__':
     app.run(port=os.environ.get('PORT', 5000), debug=None)
