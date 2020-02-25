@@ -6,9 +6,9 @@ import numpy as np
 
 # SAVE_DIR = "./static/images"
 # SAVE_AUDIO = "/app/static/audio" # for heroku
-print(__file__)
+# print(__file__)
 print(os.path.dirname(__file__))
-# SAVE_AUDIO = __file__
+SAVE_AUDIO = __file__
 
 # if not os.path.isdir(SAVE_DIR):
 #     os.mkdir(SAVE_DIR)
@@ -36,7 +36,7 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print(name)
         rawaudio = request.files['uploadFile']
-        savepath = "/app/static/audio/" + name + ".mp3"
+        savepath = SAVE_AUDIO + "/static/audio/" + name + ".mp3"
         rawaudio.save(savepath)
         print("get sound")
         print("save:" + savepath)
