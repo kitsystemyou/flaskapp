@@ -9,7 +9,7 @@ from worker import conn
 # SAVE_AUDIO = "/app/static/audio" # for heroku
 # print(__file__)
 print(os.path.dirname(__file__))
-SAVE_AUDIO = __file__
+SAVE_AUDIO = os.path.dirname(__file__)
 
 q = Queue(connection=conn)
 
