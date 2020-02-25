@@ -35,7 +35,7 @@ def result():
         print(name)
         rawaudio = request.files['uploadFile']
         print(type(rawaudio))
-        savepath = SAVE_AUDIO + "/" + name + ".mp3"
+        savepath = "/app/static/audio/" + name + ".mp3"
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
