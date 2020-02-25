@@ -34,24 +34,27 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print("name:" + name)
         rawaudio = request.files['uploadFile']
-        savepath = "./tmp/" + name + ".mp3"
-        rawaudio.save(savepath)
-        print(os.path.exists(savepath))
+        # savepath = "/tmp/" + name + ".mp3"
+        # rawaudio.save(savepath)
+        # print(os.path.exists(savepath))
         print("get sound")
-        print("save:" + savepath)
+        # print("save:" + savepath)
 
         # os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
-        q.enqueue(background_process,savepath)
+        q.enqueue(background_process, args=(rawaudio, name))
         
         return render_template('./result.html', title='Audio separation', name=name)
     
     else:
         return redirect(url_for('index'))
 
-def background_process(savepath):
-    print("process separation")
-    savepath = os.path.join(flask_root, savepath[2:])
-    print("savepath")
+def background_process(rawaudio, name):
+    # print("process separation")
+    # savepath = os.path.join(flask_root, savepath[1:])
+    # print("savepath:" + savepath)
+    
+    savepath = "/tmp/" + name
+    rawaudio.save(savepath)
     print(os.path.exists(savepath))
     os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /tmp')
     print("finish separation")
