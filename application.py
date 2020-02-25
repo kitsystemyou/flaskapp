@@ -13,11 +13,6 @@ SAVE_AUDIO = os.path.dirname(__file__)
 
 q = Queue(connection=conn)
 
-# if not os.path.isdir(SAVE_DIR):
-#     os.mkdir(SAVE_DIR)
-
-# if not os.path.isdir(SAVE_AUDIO):
-#     os.mkdir (SAVE_AUDIO)
 
 app = Flask(__name__)
 
@@ -54,8 +49,9 @@ def result():
         return redirect(url_for('index'))
 
 def background_process(savepath):
+    print("process separation")
     os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
-    
+    print("finish separation")
 
 if __name__ == '__main__':
     app.run(port=os.environ.get('PORT', 5000), debug=None)
