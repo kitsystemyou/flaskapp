@@ -49,7 +49,7 @@ def result():
     else:
         return redirect(url_for('index'))
 
-def background_process(rawaudio, name):
+def background_process(name):
     # print("process separation")
     # savepath = os.path.join(flask_root, savepath[1:])
     # print("savepath:" + savepath)
