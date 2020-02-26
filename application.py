@@ -17,10 +17,6 @@ if not os.path.isdir(SAVE_AUDIO):
 
 app = Flask(__name__)
 
-# @app.route("/")
-# def hello():
-#     print("Handling request to home page.")
-#     return "Hello Azure"
 
 @app.route('/')
 def index():
@@ -40,8 +36,7 @@ def result():
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
-
-        # /home/site/wwrot is an azure directory
+        print(os.path.exists(savepath))
         os.system('python -m spleeter separate -i ' + AZURE_PATH + savepath + ' -p spleeter:2stems -o '+ AZURE_PATH + '/static/audio/')
         print("static/audio/" + name)
         return render_template('./result.html', title='Audio separation', name=name)
