@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
-from PIL import Image
 import numpy as np
 
 
