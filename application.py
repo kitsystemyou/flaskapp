@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 from rq import Queue
 from worker import conn
+import pickle
 
 # SAVE_DIR = "./static/images"
 # SAVE_AUDIO = "/app/static/audio" # for heroku
@@ -33,15 +34,15 @@ def result():
         # get filename without extention
         name = os.path.splitext(file_uploaded.filename)[0]
         print("name:" + name)
-        rawaudio = request.files['uploadFile']
+        # rawaudio = request.files['uploadFile']
         # savepath = "/tmp/" + name + ".mp3"
         # rawaudio.save(savepath)
         # print(os.path.exists(savepath))
-        print("get sound")
+        
         # print("save:" + savepath)
 
         # os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
-        q.enqueue(background_process, args=(rawaudio, name))
+        q.enqueue(background_process, name)
         
         return render_template('./result.html', title='Audio separation', name=name)
     
@@ -52,9 +53,10 @@ def background_process(rawaudio, name):
     # print("process separation")
     # savepath = os.path.join(flask_root, savepath[1:])
     # print("savepath:" + savepath)
-    
+    rawaudio = request.files['uploadFile']
     savepath = "/tmp/" + name
     rawaudio.save(savepath)
+    print("get sound")
     print(os.path.exists(savepath))
     os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /tmp')
     print("finish separation")
