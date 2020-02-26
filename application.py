@@ -5,7 +5,7 @@ import numpy as np
 
 SAVE_DIR = "./static/images"
 SAVE_AUDIO = "./static/audio"
-AZURE_PATH = "/home/site/wwroot"
+AZURE_PATH = "/home/site/wwroot/"
 
 
 if not os.path.isdir(SAVE_DIR):
@@ -30,14 +30,17 @@ def result():
         name = os.path.splitext(file_uploaded.filename)[0]
         print(name)
         rawaudio = request.files['uploadFile']
-        print(type(rawaudio))
         savepath = SAVE_AUDIO + "/" + name + ".mp3"
         rawaudio.save(savepath)
         print("get sound")
         print(savepath)
-        print(os.path.exists(savepath))
-        os.system('python -m spleeter separate -i ' + AZURE_PATH + savepath + ' -p spleeter:2stems -o '+ AZURE_PATH + '/static/audio/')
-        print("static/audio/" + name)
+        print("check path1:" + str(os.path.exists(savepath)))
+        os.system('python -m spleeter separate -i ' + savepath +  ' -p spleeter:2stems -o ' \
+                    + SAVE_AUDIO)
+        print("check path2:" + str(os.path.exists(savepath)))
+        print(os.path.exists(AZURE_PATH + "static/audio/" + name + "/vocals.wav"))
+        print(AZURE_PATH + "static/audio/" + name + "/vocals.wav")
+
         return render_template('./result.html', title='Audio separation', name=name)
     
     else:
