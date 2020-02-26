@@ -1,9 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<h1>Vocal and Band Separation</h1>
+<br>
 <form action="/result" method="post" enctype="multipart/form-data">
-  <input type="file" name="uploadFile" accept="audio/mpeg">
-  <button type="submit">Separation!</button>
+  <input type="file" name="uploadFile" accept="audio/mpeg" style="font-size: small;">
+  <button type="submit" style="font-size: medium;">Separation!</button>
 </form>
+<p>
+  please submit small audio file(about 10s length).<br>
+  and separation will take several minutes.
+</p>
 
 {% endblock %}

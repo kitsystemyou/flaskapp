@@ -1,15 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h3>Separated Audio</h3>
+<h1>Separated Audio</h1>
 
+<h3>Vocal only</h3>
+<div>
     <audio id="player1" controls>
         <source src="./static/audio/{{ name }}/vocals.wav">
     </audio>
+</div>
 
+<br>
+<h3>Band only</h3>
+<div>
     <audio id="player2" controls>
         <source src="./static/audio/{{ name }}/accompaniment.wav">
     </audio>
+</div>
 
-
+<br>
+<button type="button" onclick="history.back()" style="font-size:20px;">Back</button>
 {% endblock %}
