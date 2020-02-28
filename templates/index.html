@@ -1,9 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<h1>Vocal and Band Separation</h1>
+<br>
+<a style="font-size:25px;">
+  Accept <span style="font-weight: 700;">.mp3</span> only
+</a>
+
 <form action="/result" method="post" enctype="multipart/form-data">
-  <input type="file" name="uploadFile" accept="audio/mpeg">
-  <button type="submit">Separation!</button>
+  <input type="file" name="uploadFile" accept="audio/mpeg" style="font-size: small;">
+  <button type="submit" style="font-size: medium;">Separation!</button>
 </form>
 
+<br>
+<br>
+
+<p>
+  <span style="font-size:25px; font-weight:700" >Caution!</span><br>
+  Please submit small audio file(limit:2.5MB)<br>
+  and separation will take several minutes.<br>
+  Future, I will improve it.
+</p>
+
+<p>
+  This web site use <a href=https://github.com/deezer/spleeter>"spleeter"</a> by 
+  <a href=https://www.deezer.com/us/offers/hifi#feature-info>deezer</a>.
+</p>
 {% endblock %}
