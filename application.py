@@ -32,19 +32,6 @@ def result():
         file_uploaded = request.files['uploadFile']
         # get filename without extention
         name = os.path.splitext(file_uploaded.filename)[0]
-<<<<<<< HEAD
-        print("name:" + name)
-        # rawaudio = request.files['uploadFile']
-        # savepath = "/tmp/" + name + ".mp3"
-        # rawaudio.save(savepath)
-        # print(os.path.exists(savepath))
-        
-        # print("save:" + savepath)
-
-        # os.system('python -m spleeter separate -i ' + savepath + ' -p spleeter:2stems -o /app/static/audio/')
-        q.enqueue(background_process, name)
-        
-=======
         print(name)
         rawaudio = request.files['uploadFile']
         savepath = SAVE_AUDIO + "/" + name + ".mp3"
@@ -57,7 +44,6 @@ def result():
         print("check path2:" + str(os.path.exists(savepath)))
         print(os.path.exists("./static/audio/" + name + "/vocals.wav"))
 
->>>>>>> azure_remove_vocal
         return render_template('./result.html', title='Audio separation', name=name)
     
     else:
