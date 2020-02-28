@@ -1,19 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<h1>Original Audio</h1>
+<div>
+    <audio id="original" controls>
+        <source src="./static/audio/{{ name }}.mp3">
+    </audio>
+</div>
+
+<br>
+
 <h1>Separated Audio</h1>
 
 <h3>Vocal only</h3>
 <div>
-    <audio id="player1" controls>
+    <audio id="vocals" controls>
         <source src="./static/audio/{{ name }}/vocals.wav">
     </audio>
 </div>
 
 <br>
+
 <h3>Band only</h3>
 <div>
-    <audio id="player2" controls>
+    <audio id="bands" controls>
         <source src="./static/audio/{{ name }}/accompaniment.wav">
     </audio>
 </div>
