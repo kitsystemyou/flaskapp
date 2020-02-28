@@ -1,6 +1,6 @@
 ---
 page_type: sample
-description: "This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service on Linux."
+description: "This is a simple audio separation app that demonstrates how to use spleeter by Deezer."
 languages:
 - python
 products:
@@ -8,12 +8,19 @@ products:
 - azure-app-service
 ---
 
-# Python Flask sample for Azure App Service (Linux)
+# Python Flask app for Azure App Service (Linux)
 
-This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service on Linux.
+This repository has python, flask code of web site:"Vocal and Band Separation"
+It's is made for Azure App Service on Linux
 
-For more information, please see the [Python on App Service quickstart](https://docs.microsoft.com/azure/app-service/containers/quickstart-python).
+# Construct
++ / first page
 
-## Contributing
+Main page. An User need to select upload file(.mp3 only).
+Audio file should be small and <.mp3> file.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
++ /result
+Result page. An User can listen original and separated audio if appropriate file are uploaded.
+
+# Vocal Separation LIbrary
+[spleeter](https://github.com/deezer/spleeter) by [Deezer](https://www.deezer.com/us/offers/hifi).

@@ -14,7 +14,6 @@ flask_root = os.path.dirname(__file__)
 SAVE_AUDIO = "./static/audio"
 # AZURE_PATH = "/home/site/wwroot/" 
 
-
 if not os.path.isdir(SAVE_AUDIO):
     os.mkdir (SAVE_AUDIO)
 
