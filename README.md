@@ -11,7 +11,8 @@ products:
 # Python Flask app for Azure App Service (Linux)
 
 This repository has python, flask code of web site:"Vocal and Band Separation"
-It's is made for Azure App Service on Linux
+It's is made for Azure App Service on Linux.
+**Need:ffmpeg in Linux**
 
 # Construct
 + / first page
