@@ -1,6 +1,6 @@
 ---
-page_type: sample
-description: "This is a simple audio separation app that demonstrates how to use spleeter by Deezer."
+page_type: Two pages(File upload, display result)
+description: "This is a simple audio separation app that demonstrates the quority of spleeter by Deezer."
 languages:
 - python
 products:
