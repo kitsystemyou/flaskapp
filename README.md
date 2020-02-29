@@ -17,8 +17,8 @@ It's is made for Azure App Service on Linux.
 # Construct
 + / first page
 
-Main page. An User need to select upload file(.mp3 only).
-Audio file should be small and <.mp3> file.
+Main page. An User need to select upload audio file.
+Audio file should be small(up to 3.0MB) and <.mp3> file.
 
 + /result
 
